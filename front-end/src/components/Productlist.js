@@ -10,7 +10,7 @@ const Productlist = () => {
 
   const getProducts = async () => {
     try {
-      let result = await fetch("https://helloword-9tgz.onrender.com/products");
+      let result = await fetch("https://e-dashboarddone.vercel.app/products");
       result = await result.json();
       console.log("Response data:", result);
       if (Array.isArray(result)) {
@@ -25,7 +25,7 @@ const Productlist = () => {
 
   const deleteProduct = async (id) => {
     try {
-      let result = await fetch(`https://helloword-9tgz.onrender.com/product/${id}`, {
+      let result = await fetch(`https://e-dashboarddone.vercel.app/product/${id}`, {
         method: "DELETE",
       });
       result = await result.json();
@@ -43,7 +43,7 @@ const Productlist = () => {
 
     if (key) {
       try {
-        let result = await fetch(`https://helloword-9tgz.onrender.com/search/${key}`);
+        let result = await fetch(`https://e-dashboarddone.vercel.app/search/${key}`);
         result = await result.json();
 
         if (result) {
@@ -58,7 +58,7 @@ const Productlist = () => {
   };
 
   // Construct the image URL
-const serverUrl = 'https://helloword-9tgz.onrender.com'; // Replace with your backend server URL
+const serverUrl = 'https://e-dashboarddone.vercel.app'; // Replace with your backend server URL
 
 const constructImageUrl = (imagePath) => {
   // Check if the imagePath already contains 'uploads/' and remove it if present
