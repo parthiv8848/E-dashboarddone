@@ -13,7 +13,7 @@ const UpdateProduct = () => {
   useEffect(() => {
     const getproductdetails = async () => {
       try {
-        let result = await fetch(`https://e-dashboarddone.vercel.app/${params.id}`);
+        let result = await fetch(`https://e-dashboarddone-git-main-parthiv8848.vercel.app/${params.id}`);
         result = await result.json();
         setName(result.name);
         setPrice(result.price);
@@ -41,7 +41,7 @@ const UpdateProduct = () => {
         formData.append("image", image);
       }
 
-      let result = await fetch(`https://e-dashboarddone.vercel.app/${params.id}`, {
+      let result = await fetch(`https://e-dashboarddone-git-main-parthiv8848.vercel.app/${params.id}`, {
         method: "put",
         body: formData,
       });
