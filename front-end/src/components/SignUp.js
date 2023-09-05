@@ -20,7 +20,7 @@ useEffect(()=>{
 
 const collectiondata=async()=>{
     console.warn(name,email,password);
-    let result=await fetch("https://e-dashboarddone-is2yvystt-parthiv8848.vercel.app/register",{
+    let result=await fetch("https://okdone.onrender.com/register",{
         method:'post',
         body:JSON.stringify({name,email,password}),
         headers:{
