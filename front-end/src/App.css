@@ -1,0 +1,265 @@
+/* Global styles */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Navigation styles */
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.nav-ul {
+  padding: 5px;
+  margin: 0;
+  background-color: #1da1f2; /* Twitter Blue Color */
+}
+
+.nav-ul li {
+  display: inline-block;
+  padding: 10px;
+}
+
+.nav-ul li a {
+  color: white;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.logo {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  float: left;
+  margin-top: 3px;
+  margin-left: 10px;
+}
+
+.nav-right {
+  text-align: right;
+}
+/* Product list styles */
+
+/* Product list styles */
+
+.productlist {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.productlist ul li {
+  display: inline-block;
+  width: 150px;
+  border: 1px solid skyblue;
+  padding: 5px;
+  margin: 5px; /* Add margin to separate the items */
+}
+
+.productlist ul {
+  margin: 0;
+}
+
+.productlist ul li .buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-product-box {
+  width: 400px;
+  margin: 20px;
+  height: 40px;
+  border: 1px solid skyblue;
+  padding-left: 20px;
+}
+
+
+/* Form input styles */
+
+.inputbox {
+  display: block;
+  margin: 25px;
+  padding: 7px;
+  width: 300px;
+  border: 1px solid skyblue;
+}
+
+.invalid-input {
+  display: block;
+  color: red;
+  margin-top: -20px;
+  margin-left: 20px;
+}
+
+/* Button styles */
+
+.appbutton {
+  margin: 25px;
+  padding: 10px;
+  width: 150px;
+  background-color: skyblue;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+/* Login page styles */
+
+.login {
+  margin-left: 30%;
+  margin-top: 100px;
+}
+
+/* Responsive styles for screens with a maximum width of 768 pixels */
+
+@media (max-width: 768px) {
+  .nav-ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-ul li {
+    margin: 5px;
+  }
+
+  .nav-right {
+    text-align: center;
+  }
+
+  .product,
+  .register,
+  .login {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
+
+/* Footer styles */
+
+.footer {
+  margin-top: auto;
+  width: 100%;
+  background-color: skyblue;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Other page styles can go here */
+
+/* Add more styles as needed for different elements and pages */
+
+/* Add your custom styles below */
+
+/* Add a gradient background to the header and footer sections */
+.header {
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.footer {
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Add box-shadow to the product list items for a card-like effect */
+.productlist ul li {
+  display: inline-block;
+  width: 150px;
+  border: 1px solid skyblue;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the buttons with hover effects */
+.appbutton {
+  margin: 25px;
+  padding: 10px;
+  width: 150px;
+  background-color: skyblue;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.appbutton:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+/* Add a subtle animation to the product images */
+.productlist ul li img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+  transition: transform 0.2s;
+}
+
+.productlist ul li img:hover {
+  transform: scale(1.05);
+}
+.profile {
+  margin: 20px auto;
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.profile div {
+  margin-bottom: 15px;
+}
+
+.profile p {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+.profile input {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.profile button {
+  display: block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile button:hover {
+  background-color: #0056b3;
+}
