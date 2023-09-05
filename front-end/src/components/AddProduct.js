@@ -36,7 +36,7 @@ console.log("Image file:", image);
     formData.append("image", image);
 
     try {
-      const response = await fetch("https://e-dashboarddone.vercel.app/add-product", {
+      const response = await fetch("https://e-dashboarddone-git-main-parthiv8848.vercel.app/add-product", {
         method: "POST",
         body: formData,
       });
