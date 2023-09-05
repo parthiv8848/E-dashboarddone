@@ -1,3 +1,3 @@
 const mongoose=require('mongoose');
-mongoose.connect('mongodb+srv://parthivkevadiya:cH3CXJ0KfZtCV5WZ@cluster0.6c7jal9.mongodb.net/');
+mongoose.connect('mongodb+srv://parthivkevadiya:zFMpAc5I6cmnsV2q@cluster0.2eygtcj.mongodb.net/');
 
