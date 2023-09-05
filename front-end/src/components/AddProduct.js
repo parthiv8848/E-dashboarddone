@@ -36,7 +36,7 @@ console.log("Image file:", image);
     formData.append("image", image);
 
     try {
-      const response = await fetch("https://helloword-9tgz.onrender.com/add-product", {
+      const response = await fetch("https://e-dashboarddone.vercel.app/add-product", {
         method: "POST",
         body: formData,
       });
