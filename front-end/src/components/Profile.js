@@ -28,7 +28,7 @@ const Profile = () => {
 
     // Send a PUT request to the backend API to update the user profile
     try {
-      const result = await fetch(`https://helloword-9tgz.onrender.com/profile/:id`, {
+      const result = await fetch(`https://e-dashboarddone.vercel.app/:id`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -55,7 +55,7 @@ const Profile = () => {
   const handlePasswordReset = async () => {
     // Request OTP for password reset
     try {
-      const result = await fetch("https://helloword-9tgz.onrender.com/forgot-password", {
+      const result = await fetch("https://e-dashboarddone.vercel.app/forgot-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
