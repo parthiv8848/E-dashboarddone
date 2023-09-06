@@ -91,22 +91,21 @@ app.post('/add-product', upload.single('image'), async (req, res) => {
       // Get the file path of the uploaded image
        console.log('Request Body:', req.body);
       console.log('Uploaded File:', req.file);
-      const imagePath = req.file.path;
-       
-  
-      // Create a new Product instance
-      const newProduct = new Product({
-        name,
-        price,
-        category,
-        company,
-        image: imagePath, // Save the file path of the image in the database
-      });
-  
-      // Save the product to the database
-      const savedProduct = await newProduct.save();
-  
-      res.json(savedProduct);
+      
+   const imagePath = '/uploads/' + req.file.filename; // Construct the image path
+const newProduct = new Product({
+  name,
+  price,
+  category,
+  company,
+  image: imagePath, // Store the full URL path
+});
+
+// Save the product to the database
+const savedProduct = await newProduct.save();
+
+res.json(savedProduct);
+
     } catch (error) {
       console.error('Error adding product:', error);
       res.status(500).json({ error: 'Failed to add product' });
