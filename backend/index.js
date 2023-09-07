@@ -66,19 +66,21 @@ app.post('/register', async (req, res) => {
     }
   });
 
+const multer = require('multer');
+
+// Define storage for uploaded images
 const storage = multer.diskStorage({
   destination: function (_req, _file, cb) {
-    cb(null, './uploads');
+    cb(null, './uploads/'); // Uploads will be stored in the 'uploads' folder
   },
   filename: function (_req, file, cb) {
-    // Generate a unique filename based on the current timestamp and original file extension
-    const uniqueFileName = `${Date.now()}-${file.originalname}`;
-    cb(null, uniqueFileName);
+    cb(null, Date.now() + '-' + file.originalname); // Generate unique file names
   },
 });
 
-  
-  const upload = multer({ storage });
+// Create the multer instance with the storage configuration
+const upload = multer({ storage });
+
   
   // Import your Product model (you can adjust the path based on your folder structure)
 
