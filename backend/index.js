@@ -66,7 +66,7 @@ app.post('/register', async (req, res) => {
     }
   });
 
-const multer = require('multer');
+
 
 // Define storage for uploaded images
 const storage = multer.diskStorage({
