@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 const sharp = require("sharp");
+const fs = require('fs');
 // const config = require('./db/config');
 // const fs = require('fs');
 dotenv.config();
