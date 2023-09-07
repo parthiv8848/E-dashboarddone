@@ -92,7 +92,7 @@ app.post('/add-product', upload.single('image'), async (req, res) => {
        console.log('Request Body:', req.body);
       console.log('Uploaded File:', req.file);
       
-   const imagePath = '/image/' + req.file.filename; // Construct the image path
+   const imagePath = '/uploads/' + req.file.filename; // Construct the image path
 const newProduct = new Product({
   name,
   price,
