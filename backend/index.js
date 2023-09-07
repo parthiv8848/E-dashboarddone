@@ -70,15 +70,38 @@ const multer = require('multer');
 // Define storage for uploaded images
 const storage = multer.diskStorage({
   destination: function (_req, _file, cb) {
-    cb(null, './uploads/'); // Uploads will be stored in the 'uploads' folder
+    cb(null, './uploads'); // Ensure this path is correct
   },
   filename: function (_req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname); // Generate unique file names
+    const uniqueFileName = `${Date.now()}-${file.originalname}`;
+    cb(null, uniqueFileName);
   },
 });
 
+
 // Create the multer instance with the storage configuration
-const upload = multer({ storage });
+const upload = multer({
+  storage,
+  fileFilter: (_req, file, cb) => {
+    if (file.mimetype.startsWith('image/')) {
+      cb(null, true);
+    } else {
+      cb(new Error('Invalid file type. Only images are allowed.'));
+    }
+  },
+});
+
+// Handle errors during file upload
+upload.single('image')(req, res, (err) => {
+  if (err) {
+    console.error('File upload error:', err);
+    res.status(400).json({ error: err.message });
+  } else {
+    // File uploaded successfully
+    next(); // Continue with your route logic
+  }
+});
+
 
   
   // Import your Product model (you can adjust the path based on your folder structure)
