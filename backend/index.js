@@ -92,16 +92,6 @@ const upload = multer({
   },
 });
 
-// Handle errors during file upload
-upload.single('image')(req, res, (err) => {
-  if (err) {
-    console.error('File upload error:', err);
-    res.status(400).json({ error: err.message });
-  } else {
-    // File uploaded successfully
-    next(); // Continue with your route logic
-  }
-});
 
 
   
