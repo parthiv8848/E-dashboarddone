@@ -58,17 +58,11 @@ const Productlist = () => {
   };
 
   // Construct the image URL
-const serverUrl = 'https://okdone.onrender.com'; // Replace with your backend server URL
-
+const serverUrl = 'https://okdone.onrender.com'; // Replace with your server URL
 const constructImageUrl = (imagePath) => {
-  // Check if the imagePath already contains 'uploads/' and remove it if present
-  if (imagePath.startsWith('uploads/')) {
-    imagePath = imagePath.substring('uploads/'.length);
-  }
-  
-  const encodedImageName = encodeURIComponent(imagePath);
-  return `${serverUrl}/uploads/${encodedImageName}`;
+  return `${serverUrl}${imagePath}`;
 };
+
 
 
 
