@@ -7,6 +7,7 @@ const path = require('path');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
+const sharp = require("sharp");
 // const config = require('./db/config');
 // const fs = require('fs');
 dotenv.config();
@@ -81,23 +82,21 @@ const storage = multer.diskStorage({
 
 
 // Create the multer instance with the storage configuration
+const storage = multer.memoryStorage(); // Store images in memory for processing
+
 const upload = multer({
-  storage,
+  storage: storage,
   fileFilter: (_req, file, cb) => {
-    if (file.mimetype.startsWith('image/')) {
+    if (file.mimetype.startsWith("image/")) {
       cb(null, true);
     } else {
-      cb(new Error('Invalid file type. Only images are allowed.'));
+      cb(new Error("Invalid file type. Only images are allowed."));
     }
   },
 });
 
+// ...
 
-
-  
-  // Import your Product model (you can adjust the path based on your folder structure)
-
-  // Route to add a product with an image
 // Route to add a product with an image
 app.post('/add-product', upload.single('image'), async (req, res) => {
   try {
@@ -106,19 +105,26 @@ app.post('/add-product', upload.single('image'), async (req, res) => {
 
     // Check if an image was uploaded
     if (!req.file) {
-      return res.status(400).json({ error: 'No image uploaded' });
+      return res.status(400).json({ error: 'Image is required.' });
     }
 
-    // Get the file path of the uploaded image
-    const imagePath = '/uploads/' + req.file.filename; // Construct the image path
+    // Process and compress the uploaded image using sharp
+    const imageBuffer = await sharp(req.file.buffer)
+      .resize({ width: 300, height: 300 }) // Resize image as needed
+      .jpeg({ quality: 90 }) // Convert to JPEG format with 90% quality (adjust as needed)
+      .toBuffer();
 
-    // Create a new product document with the image URL
+    // Save the processed image to the server
+    const imagePath = '/uploads/' + Date.now() + '-compressed.jpg';
+    fs.writeFileSync('./public' + imagePath, imageBuffer);
+
+    // Create a new product with the processed image path
     const newProduct = new Product({
       name,
       price,
       category,
       company,
-      image: imagePath, // Store the image URL path
+      image: imagePath,
     });
 
     // Save the product to the database
@@ -130,8 +136,6 @@ app.post('/add-product', upload.single('image'), async (req, res) => {
     res.status(500).json({ error: 'Failed to add product' });
   }
 });
-
-  
 
 
 app.get("/products" ,async (req, resp) => {
