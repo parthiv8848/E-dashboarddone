@@ -98,34 +98,39 @@ const upload = multer({
   // Import your Product model (you can adjust the path based on your folder structure)
 
   // Route to add a product with an image
+// Route to add a product with an image
 app.post('/add-product', upload.single('image'), async (req, res) => {
-    try {
-      // Extract product details from the request body
-      const { name, price, category, company } = req.body;
-  
-      // Get the file path of the uploaded image
-       console.log('Request Body:', req.body);
-      console.log('Uploaded File:', req.file);
-      
-   const imagePath = '/uploads/' + req.file.filename; // Construct the image path
-const newProduct = new Product({
-  name,
-  price,
-  category,
-  company,
-  image: imagePath, // Store the full URL path
+  try {
+    // Extract product details from the request body
+    const { name, price, category, company } = req.body;
+
+    // Check if an image was uploaded
+    if (!req.file) {
+      return res.status(400).json({ error: 'No image uploaded' });
+    }
+
+    // Get the file path of the uploaded image
+    const imagePath = '/uploads/' + req.file.filename; // Construct the image path
+
+    // Create a new product document with the image URL
+    const newProduct = new Product({
+      name,
+      price,
+      category,
+      company,
+      image: imagePath, // Store the image URL path
+    });
+
+    // Save the product to the database
+    const savedProduct = await newProduct.save();
+
+    res.json(savedProduct);
+  } catch (error) {
+    console.error('Error adding product:', error);
+    res.status(500).json({ error: 'Failed to add product' });
+  }
 });
 
-// Save the product to the database
-const savedProduct = await newProduct.save();
-
-res.json(savedProduct);
-
-    } catch (error) {
-      console.error('Error adding product:', error);
-      res.status(500).json({ error: 'Failed to add product' });
-    }
-  });
   
 
 
