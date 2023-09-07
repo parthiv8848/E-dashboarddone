@@ -142,7 +142,7 @@ app.post('/add-product', upload.single('image'), async (req, res) => {
       category,
       company,
       // Prepend the imageBaseUrl to the image path
-      image: `${imageBaseUrl}/${imagePath}`,
+     image: `${imageBaseUrl}/${uniqueFileName}`,
     });
 
     // Save the product to the database
