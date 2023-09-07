@@ -132,13 +132,17 @@ app.post('/add-product', upload.single('image'), async (req, res) => {
     // Write the processed image to the server
     fs.writeFileSync(imagePath, imageBuffer);
 
+    // Define the base URL where your images are hosted
+    const imageBaseUrl = 'https://okdone.onrender.com';
+
     // Create a new product with the processed image path
     const newProduct = new Product({
       name,
       price,
       category,
       company,
-      image: imagePath,
+      // Prepend the imageBaseUrl to the image path
+      image: `${imageBaseUrl}/${imagePath}`,
     });
 
     // Save the product to the database
