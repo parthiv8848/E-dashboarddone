@@ -82,10 +82,10 @@ const storage = multer.diskStorage({
 
 
 // Create the multer instance with the storage configuration
-const storage = multer.memoryStorage(); // Store images in memory for processing
+
 
 const upload = multer({
-  storage: storage,
+  storage: multer.memoryStorage(), // Store images in memory for processing
   fileFilter: (_req, file, cb) => {
     if (file.mimetype.startsWith("image/")) {
       cb(null, true);
