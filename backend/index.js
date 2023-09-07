@@ -34,8 +34,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
-// app.use('/uploads', express.static('uploads'));
-
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.post('/register', async (req, res) => {
     try {
       const { name, email, password } = req.body;
