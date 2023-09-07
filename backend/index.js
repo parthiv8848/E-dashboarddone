@@ -99,7 +99,7 @@ const upload = multer({
 // ...
 
 // Route to add a product with an image
-aapp.post('/add-product', upload.single('image'), async (req, res) => {
+app.post('/add-product', upload.single('image'), async (req, res) => {
   try {
     // Extract product details from the request body
     const { name, price, category, company } = req.body;
