@@ -99,7 +99,7 @@ const upload = multer({
 // ...
 
 // Route to add a product with an image
-app.post('/add-product', upload.single('image'), async (req, res) => {
+aapp.post('/add-product', upload.single('image'), async (req, res) => {
   try {
     // Extract product details from the request body
     const { name, price, category, company } = req.body;
@@ -115,9 +115,22 @@ app.post('/add-product', upload.single('image'), async (req, res) => {
       .jpeg({ quality: 90 }) // Convert to JPEG format with 90% quality (adjust as needed)
       .toBuffer();
 
-    // Save the processed image to the server
-    const imagePath = '/uploads/' + Date.now() + '-compressed.jpg';
-    fs.writeFileSync('./public' + imagePath, imageBuffer);
+    // Define the directory where you want to save the image
+    const uploadDir = './uploads';
+
+    // Create the directory if it doesn't exist
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+
+    // Generate a unique file name
+    const uniqueFileName = `${Date.now()}-compressed.jpg`;
+
+    // Build the full path to save the file
+    const imagePath = path.join(uploadDir, uniqueFileName);
+
+    // Write the processed image to the server
+    fs.writeFileSync(imagePath, imageBuffer);
 
     // Create a new product with the processed image path
     const newProduct = new Product({
