@@ -34,7 +34,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
-app.use('/uploads', express.static('uploads'));
+// app.use('/uploads', express.static('uploads'));
 
 app.post('/register', async (req, res) => {
     try {
@@ -92,7 +92,7 @@ app.post('/add-product', upload.single('image'), async (req, res) => {
        console.log('Request Body:', req.body);
       console.log('Uploaded File:', req.file);
       
-   const imagePath = '/uploads/' + req.file.filename; // Construct the image path
+   const imagePath = '/image/' + req.file.filename; // Construct the image path
 const newProduct = new Product({
   name,
   price,
