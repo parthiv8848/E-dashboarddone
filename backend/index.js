@@ -132,13 +132,16 @@ app.post('/add-product', upload.single('image'), async (req, res) => {
     // Write the processed image to the server
     fs.writeFileSync(imagePath, imageBuffer);
 
+    // Construct the image URL based on your server's public URL
+    const publicImageUrl = `https://okdone.onrender.com/uploads/${uniqueFileName}`;
+
     // Create a new product with the processed image path
     const newProduct = new Product({
       name,
       price,
       category,
       company,
-      image: imagePath,
+      image: publicImageUrl, // Use the public image URL here
     });
 
     // Save the product to the database
@@ -150,6 +153,7 @@ app.post('/add-product', upload.single('image'), async (req, res) => {
     res.status(500).json({ error: 'Failed to add product' });
   }
 });
+
 
 app.get("/products" ,async (req, resp) => {
     const products = await Product.find();
